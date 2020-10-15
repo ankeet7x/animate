@@ -14,8 +14,15 @@ class _PokharaState extends State<Pokhara> {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
-          children: [Hero(tag: 'pkr', child: Image.asset('assets/pkr.jpg'))],
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Hero(tag: 'pkr', child: Image.asset('assets/pkr.jpg')),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           InkWell(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(10.0),
               child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -25,6 +25,10 @@ class _HomePageState extends State<HomePage> {
                       Hero(tag: 'pkr', child: Image.asset('assets/pkr.jpg'))),
             ),
             onTap: () => Navigator.pushNamed(context, '/pkr'),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            child: Image.asset('assets/mteve.jpg'),
           )
         ],
       ),
