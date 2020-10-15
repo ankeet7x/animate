@@ -16,11 +16,6 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    // image:
-                    // DecorationImage(image: AssetImage('assets/pkr.jpg'))
-                  ),
                   child:
                       Hero(tag: 'pkr', child: Image.asset('assets/pkr.jpg'))),
             ),
