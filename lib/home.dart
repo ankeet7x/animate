@@ -14,6 +14,11 @@ class _HomePageState extends State<HomePage>
     setState(() => opacityLevel = opacityLevel == 0 ? 0.1 : 1.0);
   }
 
+  bool first = true;
+  Color textColor = Colors.yellow;
+  double textSize = 30;
+  FontWeight textWeight = FontWeight.normal;
+
   @override
   void initState() {
     super.initState();
@@ -60,13 +65,31 @@ class _HomePageState extends State<HomePage>
                             parent: controller, curve: Curves.fastOutSlowIn),
                         child: FlutterLogo())),
               ],
-            )
+            ),
+            Container(
+              height: 200,
+              child: AnimatedDefaultTextStyle(
+                  duration: Duration(seconds: 2),
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: textSize,
+                      fontWeight: textWeight),
+                  child: Text(
+                    "Flutter",
+                  )),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             controller.forward();
             _changeOpacity();
+            setState(() {
+              first = !first;
+              textColor = first ? Colors.yellow : Colors.pink;
+              textWeight = first ? FontWeight.normal : FontWeight.bold;
+              textSize = first ? 30 : 60;
+            });
           },
           child: Icon(Icons.add),
         ));
