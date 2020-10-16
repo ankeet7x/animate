@@ -14,7 +14,8 @@ class _HomePageState extends State<HomePage>
     super.initState();
     controller =
         AnimationController(vsync: this, duration: Duration(seconds: 2));
-    controller.forward();
+
+    // controller.forward();
   }
 
   @override
@@ -26,34 +27,48 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(),
-      body: ListView(
-        children: [
-          InkWell(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: RotationTransition(
-                turns: Tween(begin: 0.1, end: 2.0).animate(controller),
-                child: Container(
-                    child:
-                        Hero(tag: 'pkr', child: Image.asset('assets/pkr.jpg'))),
+        appBar: new AppBar(),
+        body: ListView(
+          children: [
+            InkWell(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: RotationTransition(
+                  turns: Tween(begin: 0.0, end: 1.0).animate(controller),
+                  child: Container(
+                      child: Hero(
+                          tag: 'pkr', child: Image.asset('assets/pkr.jpg'))),
+                ),
               ),
+              onTap: () => Navigator.pushNamed(context, '/pkr'),
             ),
-            onTap: () => Navigator.pushNamed(context, '/pkr'),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-            child: ScaleTransition(
-                scale: CurvedAnimation(
-                    parent: controller, curve: Curves.fastOutSlowIn),
-                child: Image.asset('assets/mteve.jpg')),
-          )
-        ],
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.star),
-      //   onPressed: () => controller.forward(),
-      // ),
-    );
+            Row(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    child: ScaleTransition(
+                        scale: CurvedAnimation(
+                            parent: controller, curve: Curves.fastOutSlowIn),
+                        child: Icon(
+                          Icons.ac_unit_sharp,
+                          size: 30,
+                        ))),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    child: ScaleTransition(
+                        scale: CurvedAnimation(
+                            parent: controller, curve: Curves.fastOutSlowIn),
+                        child: Icon(
+                          Icons.ac_unit_sharp,
+                          size: 30,
+                        ))),
+              ],
+            )
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => controller.forward(),
+          child: Icon(Icons.add),
+        ));
   }
 }
