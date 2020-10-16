@@ -8,6 +8,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
+  double opacityLevel = 0.1;
+
+  void _changeOpacity() {
+    setState(() => opacityLevel = opacityLevel == 0 ? 0.1 : 1.0);
+  }
 
   @override
   void initState() {
@@ -44,30 +49,25 @@ class _HomePageState extends State<HomePage>
             ),
             Row(
               children: [
+                AnimatedOpacity(
+                    opacity: opacityLevel,
+                    duration: Duration(seconds: 2),
+                    child: FlutterLogo()),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                     child: ScaleTransition(
                         scale: CurvedAnimation(
                             parent: controller, curve: Curves.fastOutSlowIn),
-                        child: Icon(
-                          Icons.ac_unit_sharp,
-                          size: 30,
-                        ))),
-                Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                    child: ScaleTransition(
-                        scale: CurvedAnimation(
-                            parent: controller, curve: Curves.fastOutSlowIn),
-                        child: Icon(
-                          Icons.ac_unit_sharp,
-                          size: 30,
-                        ))),
+                        child: FlutterLogo())),
               ],
             )
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => controller.forward(),
+          onPressed: () {
+            controller.forward();
+            _changeOpacity();
+          },
           child: Icon(Icons.add),
         ));
   }
