@@ -43,7 +43,10 @@ class _HomePageState extends State<HomePage>
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-            child: Image.asset('assets/mteve.jpg'),
+            child: ScaleTransition(
+                scale: CurvedAnimation(
+                    parent: controller, curve: Curves.fastOutSlowIn),
+                child: Image.asset('assets/mteve.jpg')),
           )
         ],
       ),
