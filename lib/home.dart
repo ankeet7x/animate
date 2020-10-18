@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(),
+        appBar: new AppBar(title: Text("Animate XD")),
         body: ListView(
           children: [
             InkWell(
